@@ -153,7 +153,7 @@ const Page = () => {
               </div>
 
               {/* Quantity and Add to Cart */}
-              <div className="flex gap-4 mt-6">
+              <div className="flex gap-4 mt-6 bg-white">
                 <div className='rounded-full text-black bg-gray-200 w-40 h-10 flex items-center justify-between px-5'>
                   <p className='text-3xl cursor-pointer' onClick={() => handleQuantityChange('decrement')}>-</p>
                   <p>{quantity}</p>
