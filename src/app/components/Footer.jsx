@@ -13,7 +13,8 @@ const Footer = () => {
         <div>
             <footer className="text-black body-font bg-searchBgColor ">
 {/* Front Div */}
-                <div className='bg-black rounded-lg flex justify-between py-7 mx-16 px-6'>
+              <div className='bg-white'>
+              <div className='bg-black rounded-lg flex justify-between py-7 mx-16 px-6'>
                     <div className='text-3xl font-intergralcf font-bold text-white w-1/2'>
                         <p >STAY UPTO DATE ABOUT OUR LATEST OFFERS</p>
 
@@ -42,6 +43,7 @@ const Footer = () => {
                     </div>
 
                 </div>
+              </div>
 
 {/* Behind div */}
                 <div className="text-black body-font bg-searchBgColor">
