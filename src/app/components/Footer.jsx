@@ -10,12 +10,19 @@ const Footer = () => {
         "/g-pay_icon.png",
     ];
 
+    const sections = {
+        Company: ["About Us", "Our Team", "Careers", "Blog"],
+        Help: ["Support", "Contact Us", "Live Chat", "Documentation"],
+        FAQ: ["General Questions", "Technical Support", "Billing", "Account Issues"],
+        Resources: ["Guides", "API Docs", "Community", "Integrations"]
+    };
+
     return (
         <div className="bg-white">
             <footer className="text-black body-font bg-searchBgColor">
                 {/* Front Div */}
                 <div>
-                    <div className="bg-black rounded-lg flex flex-col md:flex-row justify-between items-center py-7 mx-4 md:mx-16 px-6">
+                    <div className="bg-black rounded-2xl flex flex-col md:flex-row justify-between items-center py-7 mx-4 md:mx-16 px-6">
                         <div className="text-xl md:text-3xl font-intergralcf font-bold text-white md:w-1/2 text-center md:text-left">
                             <p>STAY UPTO DATE ABOUT OUR LATEST OFFERS</p>
                         </div>
@@ -44,8 +51,8 @@ const Footer = () => {
 
                 {/* Behind Div */}
                 <div className="bg-searchBgColor py-8">
-                    <div className="container mx-auto px-4 md:px-5">
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+                    <div className="container mx-auto px-5 md:px-5">
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
                             {/* SHOP.CO Section */}
                             <div className="text-center md:text-left">
                                 <h2 className="text-3xl font-intergralcf font-bold">SHOP.CO</h2>
@@ -95,21 +102,22 @@ const Footer = () => {
                             </div>
 
                             {/* Links Sections */}
-                            {["Company", "Help", "FAQ", "Resources"].map((section, idx) => (
-                                <div key={idx} className="text-center md:text-left">
-                                    <h2 className="text-xl font-medium mb-4">{section}</h2>
-                                    <nav className="space-y-2">
-                                        {["About", "Features", "Work", "Career"].map((link, linkIdx) => (
-                                            <a
-                                                key={linkIdx}
-                                                className="text-sm font-light block hover:text-gray-700 transition duration-300"
-                                            >
-                                                {link}
-                                            </a>
-                                        ))}
-                                    </nav>
-                                </div>
-                            ))}
+            {Object.entries(sections).map(([section, links], idx) => (
+                <div key={idx} className="text-center md:text-left">
+                    <h2 className="text-xl font-medium mb-4">{section}</h2>
+                    <nav className="space-y-2">
+                        {links.map((link, linkIdx) => (
+                            <a
+                                key={linkIdx}
+                                href={`#${link.toLowerCase().replace(/ /g, "-")}`} // Converts the link text into a slug for the href
+                                className="text-sm font-light block hover:text-gray-700 transition duration-300"
+                            >
+                                {link}
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+            ))}
                         </div>
                     </div>
 
