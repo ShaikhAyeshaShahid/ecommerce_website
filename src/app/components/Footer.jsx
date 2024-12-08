@@ -10,42 +10,42 @@ const Footer = () => {
         "/g-pay_icon.png",
     ];
     return (
-        <div>
+        <div className='bg-white'>
             <footer className="text-black body-font bg-searchBgColor ">
-{/* Front Div */}
-              <div className='bg-white'>
-              <div className='bg-black rounded-lg flex justify-between py-7 mx-16 px-6'>
-                    <div className='text-3xl font-intergralcf font-bold text-white w-1/2'>
-                        <p >STAY UPTO DATE ABOUT OUR LATEST OFFERS</p>
+                {/* Front Div */}
+                <div>
+                    <div className='bg-black rounded-lg flex justify-between py-7 mx-16 px-6'>
+                        <div className='text-3xl font-intergralcf font-bold text-white w-1/2'>
+                            <p >STAY UPTO DATE ABOUT OUR LATEST OFFERS</p>
+
+                        </div>
+
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="email"
+                                className="text-gray-700 font-normal font-satoshi text-md h-10 w-96 bg-white rounded-2xl flex items-center px-2"
+                            >
+                                <Image
+
+                                    src='/email_icon.png'
+                                    height={32}
+                                    width={64}
+                                    alt="email"
+                                    className="h-6 w-8 p-1 my-1"
+                                />
+                                Enter your email address
+                            </label>
+
+                            <button className="flex items-center justify-center font-medium font-satoshi text-md h-10 w-96 bg-white rounded-2xl my-2 text-black">
+                                Subscribe to Newsletter
+                            </button>
+
+                        </div>
 
                     </div>
-
-                    <div className="flex flex-col">
-                        <label
-                            htmlFor="email"
-                            className="text-gray-700 font-normal font-satoshi text-md h-10 w-96 bg-white rounded-2xl flex items-center px-2"
-                        >
-                            <Image
-
-                                src='/email_icon.png'
-                                height={32} 
-                                width={64} 
-                                alt="email"
-                                className="h-6 w-8 p-1 my-1"
-                            />
-                            Enter your email address
-                        </label>
-
-                        <button className="flex items-center justify-center font-medium font-satoshi text-md h-10 w-96 bg-white rounded-2xl my-2 text-black">
-  Subscribe to Newsletter
-</button>
-                       
-                    </div>
-
                 </div>
-              </div>
 
-{/* Behind div */}
+                {/* Behind div */}
                 <div className="text-black body-font bg-searchBgColor">
                     <div className="container px-5 py-4 mx-auto ">
                         <div className="flex  md:text-left text-center -mb-10 -mx-4">
@@ -188,7 +188,7 @@ const Footer = () => {
                 </div>
 
 
-                
+
             </footer>
 
         </div>
