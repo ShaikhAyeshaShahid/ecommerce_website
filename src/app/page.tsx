@@ -51,6 +51,43 @@ export default function Home() {
     },
   ];
 
+  const topSelling = [
+    {
+      name: 'VERTICAL STRIPED SHIRT',
+      price: '$212',
+      reviews: 621,
+      rating: 5.0,
+      imageUrl: '/image5.png',
+      total: "5.0/5",
+      previous: "$232",
+      discount: "-20%"
+    },
+    {
+      name: 'COURAGE GRAPHIC T-SHIRT',
+      price: '$145',
+      reviews: 199,
+      imageUrl: '/image6.png',
+      rating: 4.0,
+      total: "4.0/5",
+    },
+    {
+      name: 'LOOSE FIT BERMUDA SHORTS',
+      price: '$80',
+      reviews: 458,
+      imageUrl: '/image7.png',
+      rating: 3.0,
+      total: "3.0/5"
+    },
+    {
+      name: 'FADED SKINNY JEANS',
+      price: '$210',
+      reviews: 357,
+      imageUrl: '/image8.png',
+      rating: 4.5,
+      total: "4.5/5",
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-white">
     {/* Hero Section */}
@@ -194,31 +231,18 @@ export default function Home() {
       </div>
     </div>
 
-<hr className="bg-gray-400 h-[1px] py-0.5 my-10"/>
+<hr className="bg-gray-400 h-[1px] my-10 mx-12"/>
 
 
     {/* Payment Icons */} {/* Top Sellings Section */}
-    <div className="w-full bg-pink-600">
     <div className="text-white body-font bg-white">
-        <div className="px-20 bg-black flex">
-          {paymentImages.map((image, index) => (
-            <Image
-            className="mx-20 py-4"
-              key={index}
-              src={image}
-              height={60}
-              width={90}
-              alt={`Payment Icon ${index + 1}`}
-            />
-          ))}
-        </div>
   
-        {/* New Arrivals Section */}
+        {/* top selling Section */}
         <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
-          NEW ARRIVALS
+        top selling
         </p>
         <div className="flex flex-row justify-center gap-24 my-4">
-          {clothes.map((item, index) => (
+          {topSelling.map((item, index) => (
             <div key={index} className="flex flex-col bg-white">
               {/* Product Image */}
               <Image
@@ -294,7 +318,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-    </div>
 
 
 
