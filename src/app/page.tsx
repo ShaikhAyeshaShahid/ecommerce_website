@@ -392,6 +392,7 @@ export default function Home() {
         <div className="flex flex-col  w-full px-10 py-10">
           <div className="flex w-full">
             {/* Image 1 with text overlay */}
+
             <div className="relative md:p-2 p-1 w-1/2  m-4 rounded-2xl">
               <Image
                 width={800}
@@ -400,9 +401,15 @@ export default function Home() {
                 className="w-full object-cover h-full object-center block rounded-2xl"
                 src="/causal.png"
               />
-              <div className="absolute inset-10 flex items-start justify-start">
-                <p className="text-black font-satoshi font-bold text-2xl">Casual </p>
-              </div>
+              <Link
+                href="/casualDescription"
+
+              >
+                <div className="absolute inset-10 flex items-start justify-start">
+                  <p className="text-black font-satoshi font-bold text-2xl">Casual </p>
+                </div>
+              </Link>
+
             </div>
 
             {/* Image 2 with text overlay */}
@@ -468,71 +475,72 @@ export default function Home() {
 
 
       <div className="flex flex-col justify-start items-start my-4 ">
-       <div className="flex  w-full items-center justify-between px-4">
-       <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2 ">
-          OUR HAPPY CUSTOMERS
-        </p>
-        <div className="flex mx-6">
-          <Image src={'/arrowleft.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4"/>
-          <Image src={'/arrowright.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4"/>
+        <div className="flex  w-full items-center justify-between px-4">
+          <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2 ">
+            OUR HAPPY CUSTOMERS
+          </p>
+          <div className="flex mx-6">
+            <Image src={'/arrowleft.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4" />
+            <Image src={'/arrowright.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4" />
+          </div>
         </div>
-       </div>
-       <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
-  <div className="flex w-max">
-    {happyCustomer.map((item, index) => (
-      <div
-        key={index}
-        className="w-96 h-56 bg-white p-4 m-4 border-2 rounded-2xl border-gray-200 sm:flex-row"
-      >
-        {/* Product Rating */}
-        <div className="flex items-center mb-4">
-          {[...Array(5)].map((_, i) => {
-            const isFullStar = i < Math.floor(item.rating);
-            const isHalfStar = i === Math.floor(item.rating) && item.rating % 1 !== 0;
-
-            return (
-              <span
-                key={i}
-                className={`flex ${
-                  isFullStar ? "text-yellow-500" : isHalfStar ? "text-yellow-500" : "text-gray-300"
-                }`}
+        <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
+          <div className="flex w-max">
+            {happyCustomer.map((item, index) => (
+              <div
+                key={index}
+                className="w-96 h-56 bg-white p-4 m-4 border-2 rounded-2xl border-gray-200 sm:flex-row"
               >
-                {isHalfStar ? (
+                {/* Product Rating */}
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => {
+                    const isFullStar = i < Math.floor(item.rating);
+                    const isHalfStar = i === Math.floor(item.rating) && item.rating % 1 !== 0;
+
+                    return (
+                      <span
+                        key={i}
+                        className={`flex ${isFullStar ? "text-yellow-500" : isHalfStar ? "text-yellow-500" : "text-gray-300"
+                          }`}
+                      >
+                        {isHalfStar ? (
+                          <Image
+                            src="/Star_half.png"
+                            height={20}
+                            width={20}
+                            alt="rating"
+                            className="h-3 w-3 pr-1"
+                          />
+                        ) : (
+                          "★"
+                        )}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* Comment Title */}
+                <div className="flex items-center">
+                  <h2 className="text-gray-900 text-lg title-font font-medium px-1">{item.name}</h2>
+
+                  {/* Green Checkmark */}
                   <Image
-                    src="/Star_half.png"
-                    height={20}
-                    width={20}
-                    alt="rating"
-                    className="h-3 w-3 pr-1"
+                    src={"/check_icon.png"}
+                    height={10}
+                    width={10}
+                    alt="check"
+                    className="h-5 w-5"
                   />
-                ) : (
-                  "★"
-                )}
-              </span>
-            );
-          })}
-        </div>
+                </div>
 
-        {/* Comment Title */}
-        <div className="flex items-center">
-          <h2 className="text-gray-900 text-lg title-font font-medium px-1">{item.name}</h2>
+                {/* Comment Text */}
+                <p className="leading-relaxed text-base">{item.reviews}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-          {/* Green Checkmark */}
-          <Image
-            src={"/check_icon.png"}
-            height={10}
-            width={10}
-            alt="check"
-            className="h-5 w-5"
-          />
-        </div>
 
-        {/* Comment Text */}
-        <p className="leading-relaxed text-base">{item.reviews}</p>
-      </div>
-    ))}
-  </div>
-</section>
 
 
 
