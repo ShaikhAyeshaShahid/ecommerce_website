@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Project Name: E-Commerce UI
+Overview
+This is a simple e-commerce UI project built using React and TailwindCSS. The app has four main screens: Home, Casual, Product Description, and Cart. Each screen provides unique functionality to simulate a basic e-commerce browsing experience.
+Screens and Navigation
+1. Home Screen
+Description: The main landing page showcasing various categories and featured products.
+Navigation:
+Clicking on the Casual category image navigates to the Casual Screen.
+Navbar dropdown options provide additional navigation links.
+2. Casual Screen
+Description: Displays a curated list of casual products based on the selection from the Home Screen.
+Navigation: Users can browse the styles and explore individual products.
+3. Product Description Screen
+Description: Shows detailed information about a selected product, including images, price, and description.
+Navigation: Accessed via the navbar dropdown under Man -> Shirt.
+4. Cart Screen
+Description: Displays the list of items the user has added to the cart.
+Navigation: Accessed through the Cart option in the navbar.
+Footer Links
+The footer is dynamically generated with the following sections:
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Company: Includes links such as About Us, Our Team, Careers, and Blog.
+Help: Contains links like Support, Contact Us, Live Chat, and Documentation.
+FAQ: Provides quick answers under General Questions, Technical Support, Billing, and Account Issues.
+Resources: Links to Guides, API Docs, Community, and Integrations.
+Features
+Dynamic Footer: Built using reusable components with section-specific links.
+Responsive Design: Fully responsive layout using TailwindCSS grid utilities.
+Interactive Navigation: Each screen navigates smoothly to the next, offering a seamless user experience.
