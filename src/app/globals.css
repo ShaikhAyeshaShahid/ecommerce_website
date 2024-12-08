@@ -26,6 +26,19 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/Satoshi-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Integralcf';
+  src: url('/Fontspring-DEMO-integralcf-bold.otf') format('truetype');
+  
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
