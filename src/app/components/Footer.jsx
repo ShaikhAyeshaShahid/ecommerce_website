@@ -1,164 +1,148 @@
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
+    const paymentImages = [
+        "/visa_icon.png",
+        "/master_icon.png",
+        "/paypal_icon.png",
+        "/apple_pay_icon.png",
+        "/g-pay_icon.png",
+    ];
+
+    const sections = {
+        Company: ["About Us", "Our Team", "Careers", "Blog"],
+        Help: ["Support", "Contact Us", "Live Chat", "Documentation"],
+        FAQ: ["General Questions", "Technical Support", "Billing", "Account Issues"],
+        Resources: ["Guides", "API Docs", "Community", "Integrations"]
+    };
+
     return (
-        <div>
-            <footer className="text-white body-font bg-black">
-                <div className="container px-5 py-4 mx-auto ">
-                    <div className="flex  md:text-left text-center -mb-10 -mx-4">
-                        <div className="lg:max-w-md md:w-1/2 w-full px-4">
-                            <h2 className="text-2xl font-inter">Exclusive</h2>
-                            <nav className="list-none mb-10 my-3">
-                                <li className='py-2'>
-                                    <a className="text-xl font-poppins">Subscribe</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-thin font-poppins">Get 10% off your first order</a>
-                                </li>
-                                <li className="py-2 w-52">
-                                    <div className="flex items-center rounded border border-gray-300 bg-black bg-opacity-50 overflow-hidden">
-                                        <input
-                                            type="text"
-                                            id="footer-field"
-                                            name="footer-field"
-                                            placeholder="Enter your email"
-                                            className="w-full bg-black bg-opacity-50 text-white py-2 px-2 transition-colors duration-200 ease-in-out font-poppins outline-none"
-                                        />
-                                        <button className="px-2 flex items-center justify-center">
-                                            <Image
-                                                src="/send_icon.png"
-                                                height={16}
-                                                width={20}
-                                                alt="send icon"
-                                                className="cursor-pointer"
-                                            />
-                                        </button>
-                                    </div>
-                                </li>
-
-
-                            </nav>
+        <div className="bg-white">
+            <footer className="text-black body-font bg-searchBgColor">
+                {/* Front Div */}
+                <div>
+                    <div className="bg-black rounded-2xl flex flex-col md:flex-row justify-between items-center py-7 mx-4 md:mx-16 px-6">
+                        <div className="text-xl md:text-3xl font-intergralcf font-bold text-white md:w-1/2 text-center md:text-left">
+                            <p>STAY UPTO DATE ABOUT OUR LATEST OFFERS</p>
                         </div>
 
-                        <div className="lg:w-1/6 md:w-1/2 font-poppins w-full px-4 text-white">
-                            <h2 className="text-xl font-light py-2">Support</h2>
-                            <nav className="list-none mb-10">
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">111 Bijoy sarani, Dhaka,  DH 1515, Bangladesh.</a>
-                                </li>
+                        <div className="flex flex-col mt-4 md:mt-0 w-full md:w-auto">
+                            <label
+                                htmlFor="email"
+                                className="text-gray-700 font-normal font-satoshi text-sm md:text-md h-12 md:h-10 bg-white rounded-2xl flex items-center px-4 w-full md:w-96"
+                            >
+                                <Image
+                                    src="/email_icon.png"
+                                    height={24}
+                                    width={24}
+                                    alt="email"
+                                    className="mr-2"
+                                />
+                                Enter your email address
+                            </label>
 
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">exclusive@gmail.com</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">+88015-88888-9999</a>
-                                </li>
-                            </nav>
+                            <button className="mt-3 flex items-center justify-center font-medium font-satoshi text-sm md:text-md h-12 md:h-10 bg-white rounded-2xl text-black w-full md:w-96">
+                                Subscribe to Newsletter
+                            </button>
                         </div>
+                    </div>
+                </div>
 
-                        <div className="lg:w-1/6 md:w-1/2 font-poppins w-full px-4 text-white">
-                            <h2 className="text-xl font-light py-2">Account</h2>
-                            <nav className="list-none mb-10">
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">My Account</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Login / Register</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Cart</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Wishlist</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Shop</a>
-                                </li>
-                            </nav>
+                {/* Behind Div */}
+                <div className="bg-searchBgColor py-8">
+                    <div className="container mx-auto px-5 md:px-5">
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+                            {/* SHOP.CO Section */}
+                            <div className="text-center md:text-left">
+                                <h2 className="text-3xl font-intergralcf font-bold">SHOP.CO</h2>
+                                <p className="mt-4 text-sm font-satoshi">
+                                    We have clothes that suit your style and which you’re proud to wear. From women to men.
+                                </p>
+                                <div className="flex justify-center md:justify-start space-x-4 mt-4">
+                                    <a className="text-black">
+                                        <svg
+                                            fill="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            className="w-5 h-5"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a className="text-black">
+                                        <svg
+                                            fill="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            className="w-5 h-5"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                        </svg>
+                                    </a>
+                                    <a className="text-black">
+                                        <svg
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            className="w-5 h-5"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Links Sections */}
+            {Object.entries(sections).map(([section, links], idx) => (
+                <div key={idx} className="text-center md:text-left">
+                    <h2 className="text-xl font-medium mb-4">{section}</h2>
+                    <nav className="space-y-2">
+                        {links.map((link, linkIdx) => (
+                            <a
+                                key={linkIdx}
+                                href={`#${link.toLowerCase().replace(/ /g, "-")}`} // Converts the link text into a slug for the href
+                                className="text-sm font-light block hover:text-gray-700 transition duration-300"
+                            >
+                                {link}
+                            </a>
+                        ))}
+                    </nav>
+                </div>
+            ))}
                         </div>
+                    </div>
 
-                        <div className="lg:w-1/6 md:w-1/2 font-poppins w-full px-4 text-white">
-                            <h2 className="text-xl font-light py-2">Quick Link</h2>
-                            <nav className="list-none mb-10">
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Privacy Policy</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Terms Of Use</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">FAQ</a>
-                                </li>
-                                <li className='py-2'>
-                                    <a className="text-sm font-light">Contact</a>
-                                </li>
-                            </nav>
-                        </div>
-
-                        <div className="lg:w-1/6 md:w-1/2 font-poppins w-full text-white">
-                            <h2 className="text-xl font-light py-2">Download App</h2>
-                            <nav className="list-none mb-10">
-                                <li className='py-2'>
-                                    <a className="text-xs font-light">Save $3 with App New User Only</a>
-                                </li>
-                                <li className='h-20 w-50 '>
+                    <div className="border-t border-gray-300 mt-8 py-4">
+                        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 md:px-5">
+                            <p className="text-gray-500 text-sm font-satoshi font-normal text-center">
+                                Shop.co © 2000-2023, All Rights Reserved
+                            </p>
+                            <div className="flex space-x-4 mt-4 md:mt-0">
+                                {paymentImages.map((image, index) => (
                                     <Image
-                                        src="/download.png"
-                                        width={200}
-                                        height={50}
-                                        alt='download'
+                                        key={index}
+                                        src={image}
+                                        height={32}
+                                        width={48}
+                                        alt={`Payment Icon ${index + 1}`}
                                     />
-                                </li>
-
-                                <li>
-                                    <span className="inline-flex lg:ml-auto lg:mt-0 mt-6 w-full justify-center md:justify-start md:w-auto text-white">
-                                        <a className="text-white my-4">
-                                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                            </svg>
-                                        </a>
-                                        <a className="ml-3 text-white my-4">
-                                            <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                                            </svg>
-                                        </a>
-                                        <a className="ml-3 text-white my-4">
-                                            <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-                                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                            </svg>
-                                        </a>
-                                        <a className="ml-3 text-white my-4">
-                                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0" className="w-5 h-5" viewBox="0 0 24 24">
-                                                <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                                                <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                                            </svg>
-                                        </a>
-                                    </span>                                </li>
-                            </nav>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className='h-px bg-white opacity-5'></div>
-
-                <div className="bg-black py-4">
-                    <div className="container mx-auto px-5 flex flex-col items-center text-center">
-                        <p className="text-gray-500 text-sm">
-                            © Copyright Rimel 2022. All right reserved
-
-                        </p>
-
-                    </div>
-                </div>
-
             </footer>
-
-
-
-
         </div>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;
