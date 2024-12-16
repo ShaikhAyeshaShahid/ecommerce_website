@@ -60,7 +60,7 @@ const Page = () => {
 
   const [selectedImage, setSelectedImage] = useState(clothes.imageUrl);
   const [selectedColor, setSelectedColor] = useState(clothes.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(clothes.sizes[2]); 
+  const [selectedSize, setSelectedSize] = useState(clothes.sizes[2]);
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (type: string) => {
@@ -71,8 +71,12 @@ const Page = () => {
     <div className='bg-white'>
       <section className="text-gray-600 body-font overflow-hidden bg-white font-satoshi">
         {/* Breadcrumb Section */}
-        <div className='mx-16 my-8'>
-          <Image height={5} width={400} alt="Route" src="/route.png" className='h-5 w-90' />
+        <div className='mx-16 my-8 flex text-lg text-black'>
+          {/* <Image height={5} width={400} alt="Route" src="/route.png" className='h-5 w-90' /> */}
+          <p className='px-2 text-gray-500'>Home {'>'}</p>
+          <p className='px-2 text-gray-500'>Shop {'>'}</p>
+          <p className='px-2 text-gray-500'>Men {'>'}</p>
+          <p className='px-2 '>T-Shirt </p>
         </div>
 
         {/* Main Content Section */}
@@ -167,93 +171,112 @@ const Page = () => {
           </div>
         </div>
       </section>
-      <Reviews/>
 
-
-
-
-
-
-
-
-
- {/* Payment Icons */} {/* You might also like Section */}
- <div className="text-white body-font bg-white">
-
-{/* You might also like Section */}
-<p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
-  You might also like
-</p>
-<div className="flex flex-row justify-center gap-24 my-4">
-  {topSelling.map((item, index) => (
-    <div key={index} className="flex flex-col bg-white">
-      {/* Product Image */}
-      <Image
-        alt="Logo"
-        src={item.imageUrl}
-        width={140}
-        height={100}
-        className="bg-searchBgColor rounded-xl h-72 w-60"
-      />
-
-      {/* Product Name */}
-      <p className="font-satoshi font-bold text-black text-lg items-center my-2">
-        {item.name}
-      </p>
-
-      {/* Product Rating */}
-      <div className="flex items-center">
-        {[...Array(5)].map((_, i) => {
-          const isFullStar = i < Math.floor(item.rating);
-          const isHalfStar =
-            i === Math.floor(item.rating) && item.rating % 1 !== 0;
-
-          return (
-            <span
-              key={i}
-              className={`flex ${isFullStar
-                ? "text-yellow-500"
-                : isHalfStar
-                  ? "text-yellow-500"
-                  : "text-gray-300"
-                }`}
-            >
-              {isHalfStar ? (
-                <Image
-                  src="/Star_half.png"
-                  height={20}
-                  width={20}
-                  alt="rating"
-                  className="h-3 w-3 pr-1"
-                />
-              ) : (
-                "★"
-              )}
-            </span>
-          );
-        })}
-        <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
-      </div>
-
-      {/* Product Pricing */}
-      <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
-        <p className="text-lg text-black">{item.price}</p>
-        {item.previous && (
-          <span className="text-lg text-gray-400 line-through">
-            {item.previous}
-          </span>
-        )}
-        {item.discount && (
-          <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
-            {item.discount}
+      <div className='font-satoshi text-xl font-normal text-black flex px-14 justify-between border-b-2  items-center mx-24'>
+        <div>
+          <p>
+            Product Details
           </p>
-        )}
+        </div>
+        <div>
+          <p className='border-b-2 border-black py-2'>
+            Rating & Reviews
+          </p>
+        </div>
+        <div>
+          <p>
+            FAQs
+          </p>
+        </div>
       </div>
-    </div>
-  ))}
-</div>
 
-</div>
+      <Reviews />
+
+
+
+
+
+
+
+
+
+      {/* Payment Icons */} {/* You might also like Section */}
+      <div className="text-white body-font bg-white">
+
+        {/* You might also like Section */}
+        <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
+          You might also like
+        </p>
+        <div className="flex flex-row justify-center gap-24 mt-4 pb-6">
+          {topSelling.map((item, index) => (
+            <div key={index} className="flex flex-col bg-white">
+              {/* Product Image */}
+              <Image
+                alt="Logo"
+                src={item.imageUrl}
+                width={140}
+                height={100}
+                className="bg-searchBgColor rounded-xl h-72 w-60"
+              />
+
+              {/* Product Name */}
+              <p className="font-satoshi font-bold text-black text-lg items-center my-2">
+                {item.name}
+              </p>
+
+              {/* Product Rating */}
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => {
+                  const isFullStar = i < Math.floor(item.rating);
+                  const isHalfStar =
+                    i === Math.floor(item.rating) && item.rating % 1 !== 0;
+
+                  return (
+                    <span
+                      key={i}
+                      className={`flex ${isFullStar
+                        ? "text-yellow-500"
+                        : isHalfStar
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                        }`}
+                    >
+                      {isHalfStar ? (
+                        <Image
+                          src="/Star_half.png"
+                          height={20}
+                          width={20}
+                          alt="rating"
+                          className="h-3 w-3 pr-1"
+                        />
+                      ) : (
+                        "★"
+                      )}
+                    </span>
+                  );
+                })}
+                <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
+              </div>
+
+              {/* Product Pricing */}
+              <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
+                <p className="text-lg text-black">{item.price}</p>
+                {item.previous && (
+                  <span className="text-lg text-gray-400 line-through">
+                    {item.previous}
+                  </span>
+                )}
+                {item.discount && (
+                  <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
+                    {item.discount}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
 
     </div>
   );

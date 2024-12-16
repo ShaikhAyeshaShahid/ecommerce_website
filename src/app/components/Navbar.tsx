@@ -33,9 +33,8 @@ const Navbar = () => {
 
           {/* Navigation Links */}
           <nav
-            className={`${
-              mobileMenu ? "block" : "hidden"
-            } md:flex flex-col md:flex-row md:ml-auto md:mr-auto items-center text-base text-black font-satoshi font-normal`}
+            className={`${mobileMenu ? "block" : "hidden"
+              } md:flex flex-col md:flex-row md:ml-auto md:mr-auto items-center text-base text-black font-satoshi font-normal`}
           >
             {/* Shop Dropdown */}
             <div
@@ -57,21 +56,21 @@ const Navbar = () => {
               {shopDropdown && (
                 <div
                   className="absolute left-0 mt-2 bg-white shadow-lg rounded-md text-gray-800 z-10"
-                  onMouseEnter={() => setShopDropdown(true)}
-                  onMouseLeave={() => setShopDropdown(false)}
+                  onMouseEnter={() => setShopDropdown(true)} // Keep dropdown open on hover
+                  onMouseLeave={() => setShopDropdown(false)} // Close dropdown when mouse leaves
                 >
                   {/* Men Dropdown */}
                   <div
                     className="block px-4 py-2 hover:bg-gray-200 cursor-pointer relative"
-                    onMouseEnter={() => setMenDropdown(true)}
-                    onMouseLeave={() => setMenDropdown(false)}
+                    onMouseEnter={() => setMenDropdown(true)} // Open nested dropdown
+                    onMouseLeave={() => setMenDropdown(false)} // Close nested dropdown
                   >
                     Men
                     {menDropdown && (
                       <div
                         className="absolute left-full top-0 ml-2 bg-white shadow-lg rounded-md text-gray-800 z-20"
-                        onMouseEnter={() => setMenDropdown(true)}
-                        onMouseLeave={() => setMenDropdown(false)}
+                        onMouseEnter={() => setMenDropdown(true)} // Keep nested dropdown open
+                        onMouseLeave={() => setMenDropdown(false)} // Close nested dropdown
                       >
                         <Link
                           href="/productDescription"
@@ -88,6 +87,7 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
+                  {/* Other Categories */}
                   <Link
                     href="/women"
                     className="block px-4 py-2 hover:bg-gray-200"
@@ -102,6 +102,7 @@ const Navbar = () => {
                   </Link>
                 </div>
               )}
+
             </div>
             <a className="mx-5 hover:text-black hover:underline text-xl">On Sale</a>
             <a className="mx-5 hover:text-black hover:underline text-xl">New Arrivals</a>
