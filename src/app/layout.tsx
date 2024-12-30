@@ -22,8 +22,8 @@ export default function RootLayout({
       <body className='bg-white'>
       <Salebanner/>
         <Navbar/>
-        {children}
-        <Footer/>
+        {/* {children} */}
+        {/* <Footer/> */}
         </body>
     </html>
   );

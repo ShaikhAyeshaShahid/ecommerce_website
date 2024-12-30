@@ -153,6 +153,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-white">
+{/* 
+
       {/* Hero Section */}
       <div className="bg-white relative">
         <div className="absolute inset-0 flex justify-between items-start pt-20">
@@ -471,9 +473,6 @@ export default function Home() {
 
 
 
-
-
-
       <div className="flex flex-col justify-start items-start my-4 ">
         <div className="flex  w-full items-center justify-between px-4">
           <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2 ">
@@ -547,17 +546,7 @@ export default function Home() {
 
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
+ */}
 
 
 
