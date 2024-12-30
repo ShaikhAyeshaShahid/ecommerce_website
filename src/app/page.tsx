@@ -153,39 +153,51 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-white">
-{/* 
-
       {/* Hero Section */}
-      <div className="bg-white relative">
-        <div className="absolute inset-0 flex justify-between items-start pt-20">
-          <div className="flex flex-col text-black w-1/2 pl-16 px-3">
-            <p className="text-6xl font-bold font-intergralcf text-black py-4">
+
+
+
+      {/* Visible on `md` and above */}
+      <div className="hidden md:block bg-searchBgColor relative">
+        {/* Main Wrapper */}
+        <div className="absolute  inset-0 flex flex-col lg:flex-row justify-between items-center lg:items-start pt-20 pl-8">
+          {/* Text Section */}
+          <div className="flex flex-col text-black w-full lg:w-1/2 px-6 lg:pl-16">
+            <p className="text-4xl sm:text-5xl lg:text-6xl font-bold font-intergralcf text-black py-4">
               FIND CLOTHES THAT MATCH YOUR STYLE
             </p>
-            <p className="text-lg text-gray-400 font-satoshi py-4">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-400 font-satoshi py-4">
               Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
             </p>
-            <button className="flex items-center justify-center font-medium font-satoshi text-md h-10 bg-black rounded-full my-2 text-white w-1/4">
+            <button className="flex items-center justify-center font-medium font-satoshi text-sm sm:text-md h-10 bg-black rounded-full my-2 text-white w-1/2 lg:w-1/4">
               Shop Now
             </button>
           </div>
+
+          {/* Left Shimmer Image */}
+          <div className="hidden lg:block">
+            <Image
+              src="/shimmer2.png"
+              height={200}
+              width={100}
+              alt="shimmer"
+              className="shimmer-image"
+            />
+          </div>
+        </div>
+
+        {/* Model Image */}
+        <div className="flex justify-center">
           <Image
-            src="/shimmer2.png"
-            height={200}
-            width={100}
-            alt="shimmer"
-            className="shimmer-image"
+            src="/model.png"
+            height={1000}
+            width={2000}
+            alt="model"
+            className="model-image max-w-full h-auto"
           />
         </div>
 
-        <Image
-          src="/model.png"
-          height={1000}
-          width={2000}
-          alt="model"
-          className="model-image"
-        />
-
+        {/* Centered Shimmer Image */}
         <div className="absolute inset-0 flex justify-center items-center">
           <Image
             src="/shimmer2.png"
@@ -197,205 +209,183 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Payment Icons */} {/* New Arrivals Section */}
-      <div className="w-full ">
-        <div className="text-white body-font bg-white">
-          <div className="px-20 bg-black flex">
-            {paymentImages.map((image, index) => (
-              <Image
-                className="mx-20 py-4"
-                key={index}
-                src={image}
-                height={60}
-                width={90}
-                alt={`Payment Icon ${index + 1}`}
-              />
-            ))}
+      {/* Visible only on `sm` devices */}
+      <div className="md:hidden flex flex-col bg-searchBgColor px-3 font-satoshi">
+        <p className="text-4xl sm:text-5xl lg:text-6xl font-bold font-intergralcf text-black py-4">
+          FIND CLOTHES THAT MATCHES YOUR STYLE
+        </p>
+
+        <p className="text-sm sm:text-base lg:text-lg text-gray-400 font-satoshi py-4">
+          Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
+        </p>
+
+        <button className="flex items-center justify-center font-medium font-satoshi text-sm sm:text-md h-10 bg-black rounded-full my-2 text-white w-full lg:w-1/4">
+          Shop Now
+        </button>
+
+        <div className="flex justify-center py-4">
+          <div className="border-r-slate-500 px-2">
+            <p className="text-black text-2xl font-bold">200 +</p>
+            <p className="text-gray-400 font-normal">International Brands</p>
           </div>
 
-          {/* New Arrivals Section */}
-          <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
-            NEW ARRIVALS
-          </p>
-          <div className="flex flex-row justify-center gap-24 my-4">
-            {clothes.map((item, index) => (
-              <div key={index} className="flex flex-col bg-white">
-                {/* Product Image */}
-                <Image
-                  alt="Logo"
-                  src={item.imageUrl}
-                  width={140}
-                  height={100}
-                  className="bg-searchBgColor rounded-xl h-72 w-60"
-                />
+          <div className="border-r-2 bg-gray-400"></div>
 
-                {/* Product Name */}
-                <p className="font-satoshi font-bold text-black text-lg items-center my-2">
-                  {item.name}
-                </p>
-
-                {/* Product Rating */}
-                <div className="flex items-center">
-                  {[...Array(5)].map((_, i) => {
-                    const isFullStar = i < Math.floor(item.rating);
-                    const isHalfStar =
-                      i === Math.floor(item.rating) && item.rating % 1 !== 0;
-
-                    return (
-                      <span
-                        key={i}
-                        className={`flex ${isFullStar
-                          ? "text-yellow-500"
-                          : isHalfStar
-                            ? "text-yellow-500"
-                            : "text-gray-300"
-                          }`}
-                      >
-                        {isHalfStar ? (
-                          <Image
-                            src="/Star_half.png"
-                            height={20}
-                            width={20}
-                            alt="rating"
-                            className="h-3 w-3 pr-1"
-                          />
-                        ) : (
-                          "★"
-                        )}
-                      </span>
-                    );
-                  })}
-                  <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
-                </div>
-
-                {/* Product Pricing */}
-                <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
-                  <p className="text-lg text-black">{item.price}</p>
-                  {item.previous && (
-                    <span className="text-lg text-gray-400 line-through">
-                      {item.previous}
-                    </span>
-                  )}
-                  {item.discount && (
-                    <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
-                      {item.discount}
-                    </p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* View All Button */}
-          <div className="flex justify-center my-6">
-            <button className="font-satoshi font-medium text-black border rounded-full py-2 w-48 text-center">
-              View All
-            </button>
+          <div className="border-r-slate-500 px-2">
+            <p className="text-black text-2xl font-bold">2,000 +</p>
+            <p className="text-gray-400 font-normal">High-Quality Products</p>
           </div>
         </div>
-      </div>
 
-      <hr className="bg-gray-400 h-[1px] my-10 mx-12" />
+        <div className="">
+          <p className="text-black text-2xl font-bold text-center">30,000 +</p>
+          <p className="text-gray-400 font-normal text-center">Happy Customers</p>
+        </div>
 
-
-      {/* Payment Icons */} {/* Top Sellings Section */}
-      <div className="text-white body-font bg-white">
-
-        {/* top selling Section */}
-        <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
-          top selling
-        </p>
-        <div className="flex flex-row justify-center gap-24 my-4">
-          {topSelling.map((item, index) => (
-            <div key={index} className="flex flex-col bg-white">
-              {/* Product Image */}
+        <div className="bg-white relative">
+          {/* Main Wrapper */}
+          <div className="absolute inset-0 flex flex-col lg:flex-row justify-between items-center lg:items-start pt-20">
+            {/* Left Shimmer Image */}
+            <div className="absolute inset-0 flex justify-end items-start">
               <Image
-                alt="Logo"
-                src={item.imageUrl}
-                width={140}
-                height={100}
-                className="bg-searchBgColor rounded-xl h-72 w-60"
+                src="/shimmer2.png"
+                height={200}
+                width={100}
+                alt="shimmer"
+                className="shimmer-image"
               />
-
-              {/* Product Name */}
-              <p className="font-satoshi font-bold text-black text-lg items-center my-2">
-                {item.name}
-              </p>
-
-              {/* Product Rating */}
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => {
-                  const isFullStar = i < Math.floor(item.rating);
-                  const isHalfStar =
-                    i === Math.floor(item.rating) && item.rating % 1 !== 0;
-
-                  return (
-                    <span
-                      key={i}
-                      className={`flex ${isFullStar
-                        ? "text-yellow-500"
-                        : isHalfStar
-                          ? "text-yellow-500"
-                          : "text-gray-300"
-                        }`}
-                    >
-                      {isHalfStar ? (
-                        <Image
-                          src="/Star_half.png"
-                          height={20}
-                          width={20}
-                          alt="rating"
-                          className="h-3 w-3 pr-1"
-                        />
-                      ) : (
-                        "★"
-                      )}
-                    </span>
-                  );
-                })}
-                <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
-              </div>
-
-              {/* Product Pricing */}
-              <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
-                <p className="text-lg text-black">{item.price}</p>
-                {item.previous && (
-                  <span className="text-lg text-gray-400 line-through">
-                    {item.previous}
-                  </span>
-                )}
-                {item.discount && (
-                  <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
-                    {item.discount}
-                  </p>
-                )}
-              </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* View All Button */}
-        <div className="flex justify-center my-6">
-          <button className="font-satoshi font-medium text-black border rounded-full py-2 w-48 text-center">
-            View All
-          </button>
+          {/* Model Image */}
+          <div className="flex justify-center">
+            <Image
+              src="/model2.png"
+              height={1000}
+              width={2000}
+              alt="model"
+              className="model-image max-w-full h-auto"
+            />
+          </div>
+
+          {/* Centered Shimmer Image */}
+          <div className="absolute inset-0 flex justify-start items-center">
+            <Image
+              src="/shimmer2.png"
+              height={50}
+              width={50}
+              alt="shimmer"
+              className="shimmer-image"
+            />
+          </div>
         </div>
+      </div>
+
+      {/* Brand Icons */}
+      <div className="bg-black flex flex-wrap sm:gap-14 md:gap-36 px-4 sm:px-8 md:px-24 justify-center sm:justify-start ">
+        {paymentImages.map((image, index) => (
+          <Image
+            className="sm:p-2 bg-pink-400 "
+            key={index}
+            src={image}
+            height={70} // Smaller height for mobile
+            width={100}  // Smaller width for mobile
+            alt={`Payment Icon ${index + 1}`}
+          />
+        ))}
       </div>
 
 
 
-      {/* Browse by dress style */}
+      {/* New Arrivals Section */}
+      <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
+        NEW ARRIVALS
+      </p>
+      <div className="flex flex-row justify-center gap-24 my-4">
+        {clothes.map((item, index) => (
+          <div key={index} className="flex flex-col bg-white">
+            {/* Product Image */}
+            <Image
+              alt="Logo"
+              src={item.imageUrl}
+              width={140}
+              height={100}
+              className="bg-searchBgColor rounded-xl h-72 w-60"
+            />
 
-      <section className=" bg-searchBgColor rounded-2xl h-1/4 flex flex-col items-center justify-center mx-16 my-10">
+            {/* Product Name */}
+            <p className="font-satoshi font-bold text-black text-lg items-center my-2">
+              {item.name}
+            </p>
 
+            {/* Product Rating */}
+            <div className="flex items-center">
+              {[...Array(5)].map((_, i) => {
+                const isFullStar = i < Math.floor(item.rating);
+                const isHalfStar =
+                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
+
+                return (
+                  <span
+                    key={i}
+                    className={`flex ${isFullStar
+                      ? "text-yellow-500"
+                      : isHalfStar
+                        ? "text-yellow-500"
+                        : "text-gray-300"
+                      }`}
+                  >
+                    {isHalfStar ? (
+                      <Image
+                        src="/Star_half.png"
+                        height={20}
+                        width={20}
+                        alt="rating"
+                        className="h-3 w-3 pr-1"
+                      />
+                    ) : (
+                      "★"
+                    )}
+                  </span>
+                );
+              })}
+              <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
+            </div>
+
+            {/* Product Pricing */}
+            <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
+              <p className="text-lg text-black">{item.price}</p>
+              {item.previous && (
+                <span className="text-lg text-gray-400 line-through">
+                  {item.previous}
+                </span>
+              )}
+              {item.discount && (
+                <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
+                  {item.discount}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* View All Button */}
+      <div className="flex justify-center my-6">
+        <button className="font-satoshi font-medium text-black border rounded-full py-2 w-48 text-center">
+          View All
+        </button>
+      </div>
+      {/* Browse by Dress Style */}
+      <section className="bg-searchBgColor rounded-2xl h-1/4 flex flex-col items-center justify-center mx-16 my-10">
         <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
-          BROWSE BY dress STYLE
+          BROWSE BY DRESS STYLE
         </p>
-        <div className="flex flex-col  w-full px-10 py-10">
+        <div className="flex flex-col w-full px-10 py-10">
+          {/* Row 1 */}
           <div className="flex w-full">
-            {/* Image 1 with text overlay */}
-
-            <div className="relative md:p-2 p-1 w-1/2  m-4 rounded-2xl">
+            {/* Image 1 with Text Overlay */}
+            <div className="relative md:p-2 p-1 w-1/2 m-4 rounded-2xl">
               <Image
                 width={800}
                 height={50}
@@ -403,19 +393,15 @@ export default function Home() {
                 className="w-full object-cover h-full object-center block rounded-2xl"
                 src="/causal.png"
               />
-              <Link
-                href="/casualDescription"
-
-              >
+              <Link href="/casualDescription">
                 <div className="absolute inset-10 flex items-start justify-start">
-                  <p className="text-black font-satoshi font-bold text-2xl">Casual </p>
+                  <p className="text-black font-satoshi font-bold text-2xl">Casual</p>
                 </div>
               </Link>
-
             </div>
 
-            {/* Image 2 with text overlay */}
-            <div className="relative md:p-2 p-1 w-full  m-4 ">
+            {/* Image 2 with Text Overlay */}
+            <div className="relative md:p-2 p-1 w-full m-4">
               <Image
                 width={800}
                 height={50}
@@ -429,13 +415,10 @@ export default function Home() {
             </div>
           </div>
 
-
-
-
+          {/* Row 2 */}
           <div className="flex w-full">
-
-            {/* Image 2 with text overlay */}
-            <div className="relative md:p-2 p-1 w-full  m-4 ">
+            {/* Image 3 with Text Overlay */}
+            <div className="relative md:p-2 p-1 w-full m-4">
               <Image
                 width={800}
                 height={50}
@@ -448,8 +431,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Image 1 with text overlay */}
-            <div className="relative md:p-2 p-1 w-1/2  m-4 rounded-2xl">
+            {/* Image 4 with Text Overlay */}
+            <div className="relative md:p-2 p-1 w-1/2 m-4 rounded-2xl">
               <Image
                 width={800}
                 height={50}
@@ -458,29 +441,34 @@ export default function Home() {
                 src="/gym.png"
               />
               <div className="absolute inset-10 flex items-start justify-start">
-                <p className="text-black font-satoshi font-bold text-2xl">GYM </p>
+                <p className="text-black font-satoshi font-bold text-2xl">GYM</p>
               </div>
             </div>
-
-
           </div>
-
         </div>
-
-
       </section>
 
-
-
-
-      <div className="flex flex-col justify-start items-start my-4 ">
-        <div className="flex  w-full items-center justify-between px-4">
-          <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2 ">
+      {/* Our Happy Customers */}
+      <div className="flex flex-col justify-start items-start my-4">
+        <div className="flex w-full items-center justify-between px-4">
+          <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2">
             OUR HAPPY CUSTOMERS
           </p>
           <div className="flex mx-6">
-            <Image src={'/arrowleft.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4" />
-            <Image src={'/arrowright.png'} height={10} width={10} alt="arrow left " className="w-4 h-4 mx-4" />
+            <Image
+              src="/arrowleft.png"
+              height={10}
+              width={10}
+              alt="arrow left"
+              className="w-4 h-4 mx-4"
+            />
+            <Image
+              src="/arrowright.png"
+              height={10}
+              width={10}
+              alt="arrow right"
+              className="w-4 h-4 mx-4"
+            />
           </div>
         </div>
         <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
@@ -499,7 +487,11 @@ export default function Home() {
                     return (
                       <span
                         key={i}
-                        className={`flex ${isFullStar ? "text-yellow-500" : isHalfStar ? "text-yellow-500" : "text-gray-300"
+                        className={`flex ${isFullStar
+                            ? "text-yellow-500"
+                            : isHalfStar
+                              ? "text-yellow-500"
+                              : "text-gray-300"
                           }`}
                       >
                         {isHalfStar ? (
@@ -520,11 +512,12 @@ export default function Home() {
 
                 {/* Comment Title */}
                 <div className="flex items-center">
-                  <h2 className="text-gray-900 text-lg title-font font-medium px-1">{item.name}</h2>
-
+                  <h2 className="text-gray-900 text-lg title-font font-medium px-1">
+                    {item.name}
+                  </h2>
                   {/* Green Checkmark */}
                   <Image
-                    src={"/check_icon.png"}
+                    src="/check_icon.png"
                     height={10}
                     width={10}
                     alt="check"
@@ -538,20 +531,52 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-
-
-
-
-
       </div>
 
- */}
-
-
-
-
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   );
 }

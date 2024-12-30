@@ -9,27 +9,62 @@ const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-    <div>
-      <header className="body-font bg-white text-black shadow-md">
-        <div className="container mx-auto flex flex-wrap p-4 md:p-5 flex-col md:flex-row items-center">
-          {/* Logo */}
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <span className="ml-3 text-3xl font-intergralcf font-bold">SHOP.CO</span>
-          </a>
+   <div className="bg-white">
+     <div className=" flex sm:p-0 sm:mx-0 md:py-5 flex-col md:flex-row  bg-white md:mx-20">
+          <div className="flex items-center justify-between ">
+           <div className="flex justify-start">
+             {/* Mobile Menu Button */}
+             <button
+              className="inline-flex items-center md:hidden ml-auto"
+              onClick={() => setMobileMenu(!mobileMenu)}
+            >
+              <Image
+                src="/menu-icon.png"
+                alt="Menu"
+                width={20}
+                height={20}
+                className="text-black w-8 h-8 mx-2"
+              />
+            </button>
+            {/* Logo */}
+            <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+              <span className="ml-3 text-3xl font-intergralcf font-bold">SHOP.CO</span>
+            </a>
+           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="inline-flex items-center md:hidden ml-auto"
-            onClick={() => setMobileMenu(!mobileMenu)}
-          >
-            <Image
-              src="/menu-icon.png"
-              alt="Menu"
-              width={30}
-              height={30}
-              className="text-black"
+          <div className=" md:hidden flex justify-end">
+              {/* Icons */}
+              <Image
+              src="/search_icon.png"
+              alt="search"
+              width={20}
+              height={20}
+              className="w-8 h-8 mx-2"
+              style={{ filter: "brightness(0) saturate(100%) invert(0)" }}
             />
-          </button>
+              <Link href="/productCart">
+              <Image
+                src="/cart-icon.png"
+                alt="Cart"
+                width={20}
+                height={20}
+                className="w-8 h-8 mx-2"
+              />
+            </Link>
+            <Image
+              src="/user_profile_icon.png"
+              alt="User Profile"
+              width={20}
+              height={20}
+              className="w-8 h-8 mx-2"
+            />
+           
+          </div>
+
+          </div>
+
+
+
 
           {/* Navigation Links */}
           <nav
@@ -110,7 +145,7 @@ const Navbar = () => {
           </nav>
 
           {/* Search Bar */}
-          <div className="hidden lg:flex bg-gray-100 rounded-3xl text-gray-400 items-center p-2 border w-full lg:w-96 max-w-md">
+          <div className="hidden lg:flex bg-gray-100 rounded-3xl text-gray-400 items-center p-2 border w-full max-w-md">
             <Image
               src="/search_icon.png"
               alt="Search"
@@ -126,7 +161,7 @@ const Navbar = () => {
           </div>
 
           {/* Icons */}
-          <div className="flex items-center mt-4 md:mt-0">
+          <div className="hidden lg:flex items-center mt-4 md:mt-0">
             <Link href="/productCart">
               <Image
                 src="/cart-icon.png"
@@ -145,9 +180,7 @@ const Navbar = () => {
             />
           </div>
         </div>
-      </header>
-      <hr />
-    </div>
+   </div>
   );
 };
 
