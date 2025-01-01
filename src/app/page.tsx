@@ -282,10 +282,10 @@ export default function Home() {
       </div>
 
       {/* Brand Icons */}
-      <div className="bg-black flex flex-wrap sm:gap-14 md:gap-36 px-4 sm:px-8 md:px-24 justify-center sm:justify-start ">
+      <div className="bg-black flex flex-wrap sm:gap-14 md:gap-36 px-4 sm:px-10 md:px-20 justify-center sm:justify-start ">
         {paymentImages.map((image, index) => (
           <Image
-            className="sm:p-2 bg-pink-400 "
+            className="sm:p-4"
             key={index}
             src={image}
             height={70} // Smaller height for mobile
@@ -298,77 +298,85 @@ export default function Home() {
 
 
       {/* New Arrivals Section */}
-      <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
+      <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         NEW ARRIVALS
       </p>
-      <div className="flex flex-row justify-center gap-24 my-4">
-        {clothes.map((item, index) => (
-          <div key={index} className="flex flex-col bg-white">
-            {/* Product Image */}
-            <Image
-              alt="Logo"
-              src={item.imageUrl}
-              width={140}
-              height={100}
-              className="bg-searchBgColor rounded-xl h-72 w-60"
-            />
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
+  {clothes.map((item, index) => (
+    <div
+      key={index}
+      className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
+    >
+      {/* Product Image */}
+      <Image
+        alt="Logo"
+        src={item.imageUrl}
+        width={140}
+        height={100}
+        className="bg-searchBgColor rounded-xl h-64 w-full sm:w-48 object-cover "
+      />
 
-            {/* Product Name */}
-            <p className="font-satoshi font-bold text-black text-lg items-center my-2">
-              {item.name}
-            </p>
+      {/* Product Name */}
+      <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
+        {item.name}
+      </p>
 
-            {/* Product Rating */}
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => {
-                const isFullStar = i < Math.floor(item.rating);
-                const isHalfStar =
-                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
+      {/* Product Rating */}
+      <div className="flex justify-center items-center">
+        {[...Array(5)].map((_, i) => {
+          const isFullStar = i < Math.floor(item.rating);
+          const isHalfStar =
+            i === Math.floor(item.rating) && item.rating % 1 !== 0;
 
-                return (
-                  <span
-                    key={i}
-                    className={`flex ${isFullStar
-                      ? "text-yellow-500"
-                      : isHalfStar
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                      }`}
-                  >
-                    {isHalfStar ? (
-                      <Image
-                        src="/Star_half.png"
-                        height={20}
-                        width={20}
-                        alt="rating"
-                        className="h-3 w-3 pr-1"
-                      />
-                    ) : (
-                      "★"
-                    )}
-                  </span>
-                );
-              })}
-              <p className="font-satoshi font-normal text-black ml-2">{item.total}</p>
-            </div>
-
-            {/* Product Pricing */}
-            <div className="flex justify-start items-center gap-3 font-satoshi font-bold my-2">
-              <p className="text-lg text-black">{item.price}</p>
-              {item.previous && (
-                <span className="text-lg text-gray-400 line-through">
-                  {item.previous}
-                </span>
+          return (
+            <span
+              key={i}
+              className={`flex ${
+                isFullStar
+                  ? "text-yellow-500"
+                  : isHalfStar
+                  ? "text-yellow-500"
+                  : "text-gray-300"
+              }`}
+            >
+              {isHalfStar ? (
+                <Image
+                  src="/Star_half.png"
+                  height={20}
+                  width={20}
+                  alt="rating"
+                  className="h-3 w-3 pr-1"
+                />
+              ) : (
+                "★"
               )}
-              {item.discount && (
-                <p className="border-none rounded-2xl p-1 bg-red-200 text-red-500 text-sm">
-                  {item.discount}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
+            </span>
+          );
+        })}
+        <p className="font-satoshi font-normal text-black ml-2">
+          {item.total}
+        </p>
       </div>
+
+      {/* Product Pricing */}
+      <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
+        <p className="text-lg text-black">{item.price}</p>
+        {item.previous && (
+          <span className="text-lg text-gray-400 line-through">
+            {item.previous}
+          </span>
+        )}
+        {item.discount && (
+          <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
+            {item.discount}
+          </p>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+
 
       {/* View All Button */}
       <div className="flex justify-center my-6">
