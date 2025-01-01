@@ -301,91 +301,187 @@ export default function Home() {
       <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         NEW ARRIVALS
       </p>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
-  {clothes.map((item, index) => (
-    <div
-      key={index}
-      className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
-    >
-      {/* Product Image */}
-      <Image
-        alt="Logo"
-        src={item.imageUrl}
-        width={140}
-        height={100}
-        className="bg-searchBgColor rounded-xl h-64 w-full sm:w-48 object-cover "
-      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
+        {clothes.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
+          >
+            {/* Product Image */}
+            <Image
+              alt="Logo"
+              src={item.imageUrl}
+              width={140}
+              height={100}
+              className="bg-searchBgColor rounded-xl h-64 sm:h-40 w-full sm:w-48 object-cover "
+            />
 
-      {/* Product Name */}
-      <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
-        {item.name}
-      </p>
+            {/* Product Name */}
+            <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
+              {item.name}
+            </p>
 
-      {/* Product Rating */}
-      <div className="flex justify-center items-center">
-        {[...Array(5)].map((_, i) => {
-          const isFullStar = i < Math.floor(item.rating);
-          const isHalfStar =
-            i === Math.floor(item.rating) && item.rating % 1 !== 0;
+            {/* Product Rating */}
+            <div className="flex justify-center items-center">
+              {[...Array(5)].map((_, i) => {
+                const isFullStar = i < Math.floor(item.rating);
+                const isHalfStar =
+                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
 
-          return (
-            <span
-              key={i}
-              className={`flex ${
-                isFullStar
-                  ? "text-yellow-500"
-                  : isHalfStar
-                  ? "text-yellow-500"
-                  : "text-gray-300"
-              }`}
-            >
-              {isHalfStar ? (
-                <Image
-                  src="/Star_half.png"
-                  height={20}
-                  width={20}
-                  alt="rating"
-                  className="h-3 w-3 pr-1"
-                />
-              ) : (
-                "★"
+                return (
+                  <span
+                    key={i}
+                    className={`flex ${isFullStar
+                        ? "text-yellow-500"
+                        : isHalfStar
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                      }`}
+                  >
+                    {isHalfStar ? (
+                      <Image
+                        src="/Star_half.png"
+                        height={20}
+                        width={20}
+                        alt="rating"
+                        className="h-3 w-3 pr-1"
+                      />
+                    ) : (
+                      "★"
+                    )}
+                  </span>
+                );
+              })}
+              <p className="font-satoshi font-normal text-black ml-2">
+                {item.total}
+              </p>
+            </div>
+
+            {/* Product Pricing */}
+            <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
+              <p className="text-lg text-black">{item.price}</p>
+              {item.previous && (
+                <span className="text-lg text-gray-400 line-through">
+                  {item.previous}
+                </span>
               )}
-            </span>
-          );
-        })}
-        <p className="font-satoshi font-normal text-black ml-2">
-          {item.total}
-        </p>
+              {item.discount && (
+                <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
+                  {item.discount}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
-
-      {/* Product Pricing */}
-      <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
-        <p className="text-lg text-black">{item.price}</p>
-        {item.previous && (
-          <span className="text-lg text-gray-400 line-through">
-            {item.previous}
-          </span>
-        )}
-        {item.discount && (
-          <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
-            {item.discount}
-          </p>
-        )}
-      </div>
-    </div>
-  ))}
-</div>
 
 
 
       {/* View All Button */}
-      <div className="flex justify-center my-6">
-        <button className="font-satoshi font-medium text-black border rounded-full py-2 w-48 text-center">
+      <div className="flex justify-center my-6 mx-4 border-b-2 pb-8">
+        <button className="font-satoshi font-medium text-black border w-full   md:w-48 rounded-full py-2 text-center ">
           View All
         </button>
       </div>
+
+
+
+
+      {/* TOP SELLING Section */}
+      <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
+        TOP SELLING
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
+        {topSelling.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
+          >
+            {/* Product Image */}
+            <Image
+              alt="Logo"
+              src={item.imageUrl}
+              width={140}
+              height={100}
+              className="bg-searchBgColor rounded-xl h-64 sm:h-40 w-full sm:w-48 object-cover "
+            />
+
+            {/* Product Name */}
+            <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
+              {item.name}
+            </p>
+
+            {/* Product Rating */}
+            <div className="flex justify-center items-center">
+              {[...Array(5)].map((_, i) => {
+                const isFullStar = i < Math.floor(item.rating);
+                const isHalfStar =
+                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
+
+                return (
+                  <span
+                    key={i}
+                    className={`flex ${isFullStar
+                        ? "text-yellow-500"
+                        : isHalfStar
+                          ? "text-yellow-500"
+                          : "text-gray-300"
+                      }`}
+                  >
+                    {isHalfStar ? (
+                      <Image
+                        src="/Star_half.png"
+                        height={20}
+                        width={20}
+                        alt="rating"
+                        className="h-3 w-3 pr-1"
+                      />
+                    ) : (
+                      "★"
+                    )}
+                  </span>
+                );
+              })}
+              <p className="font-satoshi font-normal text-black ml-2">
+                {item.total}
+              </p>
+            </div>
+
+            {/* Product Pricing */}
+            <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
+              <p className="text-lg text-black">{item.price}</p>
+              {item.previous && (
+                <span className="text-lg text-gray-400 line-through">
+                  {item.previous}
+                </span>
+              )}
+              {item.discount && (
+                <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
+                  {item.discount}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+
+
+      {/* View All Button */}
+      <div className="flex justify-center my-6 mx-4 ">
+        <button className="font-satoshi font-medium text-black border w-full   md:w-48 rounded-full py-2 text-center ">
+          View All
+        </button>
+      </div>
+
+
+
+
+
+
+
       {/* Browse by Dress Style */}
-      <section className="bg-searchBgColor rounded-2xl h-1/4 flex flex-col items-center justify-center mx-16 my-10">
+      <section className="bg-searchBgColor rounded-2xl h-1/4 flex flex-col items-center justify-center mx-16  my-10 sm:mx-5">
         <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
           BROWSE BY DRESS STYLE
         </p>
@@ -456,9 +552,22 @@ export default function Home() {
         </div>
       </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* Our Happy Customers */}
-      <div className="flex flex-col justify-start items-start my-4">
-        <div className="flex w-full items-center justify-between px-4">
+      <div className="flex flex-col justify-start items-start my-4 bg-red-300">
+        <div className="flex w-full items-center justify-between px-4 bg-pink-300">
           <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2">
             OUR HAPPY CUSTOMERS
           </p>
@@ -496,10 +605,10 @@ export default function Home() {
                       <span
                         key={i}
                         className={`flex ${isFullStar
+                          ? "text-yellow-500"
+                          : isHalfStar
                             ? "text-yellow-500"
-                            : isHalfStar
-                              ? "text-yellow-500"
-                              : "text-gray-300"
+                            : "text-gray-300"
                           }`}
                       >
                         {isHalfStar ? (
