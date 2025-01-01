@@ -301,7 +301,7 @@ export default function Home() {
       <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         NEW ARRIVALS
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
         {clothes.map((item, index) => (
           <div
             key={index}
@@ -391,7 +391,7 @@ export default function Home() {
       <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         TOP SELLING
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
         {topSelling.map((item, index) => (
           <div
             key={index}
@@ -481,13 +481,13 @@ export default function Home() {
 
 
       {/* Browse by Dress Style */}
-      <section className="bg-searchBgColor rounded-2xl h-1/4 flex flex-col items-center justify-center mx-16  my-10 sm:mx-5">
-        <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 my-4">
+      <div className=" justify-items-center">
+      <div className="bg-searchBgColor rounded-3xl flex flex-col  w-10/12   my-10 sm:mx-2 ">
+        <p className="text-3xl sm:text-2xl text-center font-bold font-intergralcf text-black py-5 sm:py-10">
           BROWSE BY DRESS STYLE
         </p>
-        <div className="flex flex-col w-full px-10 py-10">
-          {/* Row 1 */}
-          <div className="flex w-full">
+        {/* Row 1 */}
+        <div className="flex ">
             {/* Image 1 with Text Overlay */}
             <div className="relative md:p-2 p-1 w-1/2 m-4 rounded-2xl">
               <Image
@@ -520,7 +520,7 @@ export default function Home() {
           </div>
 
           {/* Row 2 */}
-          <div className="flex w-full">
+          <div className="flex ">
             {/* Image 3 with Text Overlay */}
             <div className="relative md:p-2 p-1 w-full m-4">
               <Image
@@ -549,8 +549,11 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </div>
+      </div>
+      
+      
+      
 
 
 
@@ -566,28 +569,32 @@ export default function Home() {
 
 
       {/* Our Happy Customers */}
-      <div className="flex flex-col justify-start items-start my-4 bg-red-300">
-        <div className="flex w-full items-center justify-between px-4 bg-pink-300">
-          <p className="text-3xl mx-16 text-center font-bold font-intergralcf text-black py-2 my-2">
-            OUR HAPPY CUSTOMERS
-          </p>
-          <div className="flex mx-6">
-            <Image
-              src="/arrowleft.png"
-              height={10}
-              width={10}
-              alt="arrow left"
-              className="w-4 h-4 mx-4"
-            />
-            <Image
-              src="/arrowright.png"
-              height={10}
-              width={10}
-              alt="arrow right"
-              className="w-4 h-4 mx-4"
-            />
-          </div>
-        </div>
+      <div className="flex flex-col justify-start items-start ">
+        <div className="flex flex-col sm:flex-row w-full items-center justify-between px-6 sm:px-20">
+  {/* Text Section */}
+  <p className="text-xl sm:text-3xl mx-2 sm:mx-16 text-center font-bold font-intergralcf text-black py-2 my-2 sm:my-0">
+    OUR HAPPY CUSTOMERS
+  </p>
+
+  {/* Arrows Section */}
+  <div className="flex items-center mx-0 sm:mx-6">
+    <Image
+      src="/arrowleft.png"
+      height={10}
+      width={10}
+      alt="arrow left"
+      className="w-6 h-6 sm:w-4 sm:h-4 mx-2"
+    />
+    <Image
+      src="/arrowright.png"
+      height={10}
+      width={10}
+      alt="arrow right"
+      className="w-6 h-6 sm:w-4 sm:h-4 mx-2"
+    />
+  </div>
+</div>
+
         <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
           <div className="flex w-max">
             {happyCustomer.map((item, index) => (

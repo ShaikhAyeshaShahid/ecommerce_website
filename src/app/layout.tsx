@@ -23,7 +23,7 @@ export default function RootLayout({
       <Salebanner/>
         <Navbar/>
         {children}
-        {/* <Footer/> */}
+        <Footer/>
         </body>
     </html>
   );
