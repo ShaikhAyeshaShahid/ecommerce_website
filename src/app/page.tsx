@@ -72,6 +72,9 @@ export default async function Home() {
     };
   });
 
+  const reviewUrl = await fetch("https://dummyjson.com/comments");
+  const reviewResponse = await reviewUrl.json(); 
+
   const paymentImages = [
     "/versace.png",
     "/zara.png",
@@ -80,45 +83,6 @@ export default async function Home() {
     "/calvinklein.png",
   ];
 
-
-  
-
-  const topSelling = [
-    {
-      name: 'VERTICAL STRIPED SHIRT',
-      price: '$212',
-      reviews: 621,
-      rating: 5.0,
-      imageUrl: '/image5.png',
-      total: "5.0/5",
-      previous: "$232",
-      discount: "-20%"
-    },
-    {
-      name: 'COURAGE GRAPHIC T-SHIRT',
-      price: '$145',
-      reviews: 199,
-      imageUrl: '/image6.png',
-      rating: 4.0,
-      total: "4.0/5",
-    },
-    {
-      name: 'LOOSE FIT BERMUDA SHORTS',
-      price: '$80',
-      reviews: 458,
-      imageUrl: '/image7.png',
-      rating: 3.0,
-      total: "3.0/5"
-    },
-    {
-      name: 'FADED SKINNY JEANS',
-      price: '$210',
-      reviews: 357,
-      imageUrl: '/image8.png',
-      rating: 4.5,
-      total: "4.5/5",
-    },
-  ];
 
 
   const happyCustomer = [
@@ -333,14 +297,20 @@ export default async function Home() {
       <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         NEW ARRIVALS
       </p>
+
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
         {allProducts.map((product) => (
+      
           <div
             key={product._id}
             className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
           >
-            {/* Product Image */}
-            <Image
+
+            <Link
+            href={`/productDescription/${product._id}`}>
+             {/* Product Image */}
+             <Image
               alt={product.name}
               src={product.image}
               width={140}
@@ -391,7 +361,7 @@ export default async function Home() {
 
             {/* Product Pricing */}
             <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
-              <p className="text-lg text-black">{product.price}</p>
+              <p className="text-lg text-black">${product.price}</p>
               {product.previous && (
                 <span className="text-lg text-gray-400 line-through">
                   {product.previous}
@@ -403,9 +373,13 @@ export default async function Home() {
                 </p>
               )}
             </div>
+            </Link>
+           
           </div>
         ))}
       </div>
+      
+      
 
 
 
@@ -423,16 +397,21 @@ export default async function Home() {
       <p className="text-3xl text-center font-bold font-intergralcf text-black py-5 mt-4 mb-1">
         TOP SELLING
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
-        {topSelling.map((item, index) => (
+
+       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
+        {allProducts.map((product) => (
+      
           <div
-            key={index}
+            key={product._id}
             className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
           >
-            {/* Product Image */}
-            <Image
-              alt="Logo"
-              src={item.imageUrl}
+
+            <Link
+            href={`/productDescription/${product._id}`}>
+             {/* Product Image */}
+             <Image
+              alt={product.name}
+              src={product.image}
               width={140}
               height={100}
               className="bg-searchBgColor rounded-xl h-64 sm:h-40 w-full sm:w-48 object-cover "
@@ -440,15 +419,15 @@ export default async function Home() {
 
             {/* Product Name */}
             <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
-              {item.name}
+              {product.name}
             </p>
 
             {/* Product Rating */}
             <div className="flex justify-center items-center">
               {[...Array(5)].map((_, i) => {
-                const isFullStar = i < Math.floor(item.rating);
+                const isFullStar = i < Math.floor(product.rating);
                 const isHalfStar =
-                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
+                  i === Math.floor(product.rating) && product.rating % 1 !== 0;
 
                 return (
                   <span
@@ -475,28 +454,29 @@ export default async function Home() {
                 );
               })}
               <p className="font-satoshi font-normal text-black ml-2">
-                {item.total}
+                {product.total}
               </p>
             </div>
 
             {/* Product Pricing */}
             <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
-              <p className="text-lg text-black">{item.price}</p>
-              {item.previous && (
+              <p className="text-lg text-black">${product.price}</p>
+              {product.previous && (
                 <span className="text-lg text-gray-400 line-through">
-                  {item.previous}
+                  {product.previous}
                 </span>
               )}
-              {item.discount && (
+              {product.discount && (
                 <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
-                  {item.discount}
+                  {product.discount}
                 </p>
               )}
             </div>
+            </Link>
+           
           </div>
         ))}
       </div>
-
 
 
       {/* View All Button */}
@@ -613,81 +593,74 @@ export default async function Home() {
   </div>
 </div>
 
-        <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
-          <div className="flex w-max">
-            {happyCustomer.map((item, index) => (
-              <div
-                key={index}
-                className="w-96 h-56 bg-white p-4 m-4 border-2 rounded-2xl border-gray-200 sm:flex-row"
-              >
-                {/* Product Rating */}
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => {
-                    const isFullStar = i < Math.floor(item.rating);
-                    const isHalfStar = i === Math.floor(item.rating) && item.rating % 1 !== 0;
-
-                    return (
-                      <span
-                        key={i}
-                        className={`flex ${isFullStar
-                          ? "text-yellow-500"
-                          : isHalfStar
-                            ? "text-yellow-500"
-                            : "text-gray-300"
-                          }`}
-                      >
-                        {isHalfStar ? (
-                          <Image
-                            src="/Star_half.png"
-                            height={20}
-                            width={20}
-                            alt="rating"
-                            className="h-3 w-3 pr-1"
-                          />
-                        ) : (
-                          "★"
-                        )}
-                      </span>
-                    );
-                  })}
-                </div>
-
-                {/* Comment Title */}
-                <div className="flex items-center">
-                  <h2 className="text-gray-900 text-lg title-font font-medium px-1">
-                    {item.name}
-                  </h2>
-                  {/* Green Checkmark */}
-                  <Image
-                    src="/check_icon.png"
-                    height={10}
-                    width={10}
-                    alt="check"
-                    className="h-5 w-5"
-                  />
-                </div>
-
-                {/* Comment Text */}
-                <p className="leading-relaxed text-base">{item.reviews}</p>
-              </div>
-            ))}
+{/*  {response.map((user: { id: number; name: string }) => (
+          <div key={user.id}>
+            <Link href={`/user/${user.id}`}>
+              {user.name}
+            </Link>
           </div>
-        </section>
+        ))}
+ */}
+       <section className="text-gray-600 body-font flex w-full h-[300px] overflow-x-auto">
+  <div className="flex w-max">
+    {reviewResponse.comments.map((reviews: { id: number; body: string; user: { fullName: string }; }) => (
+      <div
+        key={reviews.id}
+        className="w-96 h-56 bg-white p-4 m-4 border-2 rounded-2xl border-gray-200 sm:flex-row"
+      >
+        {/* Product Rating */}
+        <div className="flex items-center mb-4">
+          {[...Array(5)].map((_, i) => {
+            const isFullStar = i < 3; // Adjust this as needed for your rating
+            const isHalfStar = false; // Since no half star is present in the data
+
+            return (
+              <span
+                key={i}
+                className={`flex ${isFullStar ? "text-yellow-500" : "text-gray-300"}`}
+              >
+                {isHalfStar ? (
+                  <Image
+                    src="/Star_half.png"
+                    height={20}
+                    width={20}
+                    alt="rating"
+                    className="h-3 w-3 pr-1"
+                  />
+                ) : (
+                  "★"
+                )}
+              </span>
+            );
+          })}
+        </div>
+
+        {/* Comment Title */}
+        <div className="flex items-center">
+          <h2 className="text-gray-900 text-lg title-font font-medium px-1">
+            {reviews.user.fullName}
+          </h2>
+          {/* Green Checkmark */}
+          <Image
+            src="/check_icon.png"
+            height={10}
+            width={10}
+            alt="check"
+            className="h-5 w-5"
+          />
+        </div>
+
+        {/* Comment Text */}
+        <p className="leading-relaxed text-base">{reviews.body}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+
       </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

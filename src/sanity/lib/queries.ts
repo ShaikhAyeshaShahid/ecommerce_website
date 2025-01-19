@@ -29,3 +29,19 @@ export const fourProducts = defineQuery(`
   sizes
 }`
  )
+
+
+ export const singleProduct = defineQuery(`
+  *[_type == "products" && _id == $id][0]{
+    name,
+    price,
+    description,
+    "imageUrl": image.asset->url,
+    category,
+    discountPercent,
+    new,
+    colors,
+    sizes
+  }
+`
+)

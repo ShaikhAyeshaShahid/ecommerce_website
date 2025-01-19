@@ -107,9 +107,11 @@ const Navbar = () => {
                         onMouseEnter={() => setMenDropdown(true)} // Keep nested dropdown open
                         onMouseLeave={() => setMenDropdown(false)} // Close nested dropdown
                       >
+                      
                         <Link
                           href="/productDescription"
                           className="block px-4 py-2 hover:bg-gray-200"
+                          onMouseDown={(e) => e.stopPropagation()} 
                         >
                           Shirts
                         </Link>
