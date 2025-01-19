@@ -1,17 +1,23 @@
+import { sanityFetch } from "@/sanity/lib/fetch";
+import { allProducts, fourProducts } from "@/sanity/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
 
-  const paymentImages = [
-    "/versace.png",
-    "/zara.png",
-    "/gucci.png",
-    "/prada.png",
-    "/calvinklein.png",
-  ];
+type Product ={
+  _id : string,
+  name : string,
+  description : string,
+  price : string,
+  image: string,
+  discount?: string;
+  rating?: number;
+  reviews?: number;
+  total?: string;
+  previous?: string;
+}
 
-
+export default async function Home() {
   const clothes = [
     {
       name: 'T-SHIRT WITH TAPE DETAILS',
@@ -50,6 +56,32 @@ export default function Home() {
       discount: "-30%"
     },
   ];
+
+  const products : Product[] = await sanityFetch({query : fourProducts})
+
+  const allProducts = products.map((productFromAPI, index) => {
+    const fallback = clothes[index] || {}; 
+    return {
+      ...productFromAPI,
+      discount: productFromAPI.discount || fallback.discount,
+      rating: fallback.rating,
+      reviews: fallback.reviews,
+      total: fallback.total,
+      previous: fallback.previous,
+      image: productFromAPI.image || fallback.imageUrl,
+    };
+  });
+
+  const paymentImages = [
+    "/versace.png",
+    "/zara.png",
+    "/gucci.png",
+    "/prada.png",
+    "/calvinklein.png",
+  ];
+
+
+  
 
   const topSelling = [
     {
@@ -302,15 +334,15 @@ export default function Home() {
         NEW ARRIVALS
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
-        {clothes.map((item, index) => (
+        {allProducts.map((product) => (
           <div
-            key={index}
+            key={product._id}
             className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
           >
             {/* Product Image */}
             <Image
-              alt="Logo"
-              src={item.imageUrl}
+              alt={product.name}
+              src={product.image}
               width={140}
               height={100}
               className="bg-searchBgColor rounded-xl h-64 sm:h-40 w-full sm:w-48 object-cover "
@@ -318,15 +350,15 @@ export default function Home() {
 
             {/* Product Name */}
             <p className="font-satoshi font-bold text-black text-lg  my-2 text-start">
-              {item.name}
+              {product.name}
             </p>
 
             {/* Product Rating */}
             <div className="flex justify-center items-center">
               {[...Array(5)].map((_, i) => {
-                const isFullStar = i < Math.floor(item.rating);
+                const isFullStar = i < Math.floor(product.rating);
                 const isHalfStar =
-                  i === Math.floor(item.rating) && item.rating % 1 !== 0;
+                  i === Math.floor(product.rating) && product.rating % 1 !== 0;
 
                 return (
                   <span
@@ -353,21 +385,21 @@ export default function Home() {
                 );
               })}
               <p className="font-satoshi font-normal text-black ml-2">
-                {item.total}
+                {product.total}
               </p>
             </div>
 
             {/* Product Pricing */}
             <div className="flex justify-center items-center gap-3 font-satoshi font-bold my-2">
-              <p className="text-lg text-black">{item.price}</p>
-              {item.previous && (
+              <p className="text-lg text-black">{product.price}</p>
+              {product.previous && (
                 <span className="text-lg text-gray-400 line-through">
-                  {item.previous}
+                  {product.previous}
                 </span>
               )}
-              {item.discount && (
+              {product.discount && (
                 <p className="border-none rounded-2xl px-2 py-1 bg-red-200 text-red-500 text-sm">
-                  {item.discount}
+                  {product.discount}
                 </p>
               )}
             </div>
