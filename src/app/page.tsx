@@ -372,14 +372,9 @@ export default function Home() {
         TOP SELLING
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20">
-        {allProducts.map((product) => (
-
-          <div
-            key={product._id}
-            className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg  items-start"
-          >
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 my-4 mx-20 items-start justify-start">
+        {filteredProducts.map((product) => (
+          <div key={product._id} className="flex flex-col sm:px-4 sm:mx-2 mx-4 p-2 rounded-lg items-start">
             <Link
               href={`/productDescription/${product._id}`}>
               {/* Product Image */}
@@ -447,7 +442,6 @@ export default function Home() {
                 )}
               </div>
             </Link>
-
           </div>
         ))}
       </div>
