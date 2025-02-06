@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
     const paymentImages = [
@@ -13,7 +14,7 @@ const Footer = () => {
     const sections = {
         Company: ["About Us", "Our Team", "Careers", "Blog"],
         Help: ["Support", "Contact Us", "Live Chat", "Documentation"],
-        FAQ: ["General Questions", "Technical Support", "Billing", "Account Issues"],
+        FAQ: [{name:["General Questions", "Technical Support", "Billing", "Account Issues"], path: "/FAQHelpCenter"}],
         Resources: ["Guides", "API Docs", "Community", "Integrations"]
     };
 
@@ -102,22 +103,35 @@ const Footer = () => {
                             </div>
 
                             {/* Links Sections */}
-            {Object.entries(sections).map(([section, links], idx) => (
-                <div key={idx} className="text-center md:text-left">
-                    <h2 className="text-xl font-medium mb-4">{section}</h2>
-                    <nav className="space-y-2">
-                        {links.map((link, linkIdx) => (
-                            <a
-                                key={linkIdx}
-                                href={`#${link.toLowerCase().replace(/ /g, "-")}`} // Converts the link text into a slug for the href
-                                className="text-sm font-light block hover:text-gray-700 transition duration-300"
-                            >
-                                {link}
-                            </a>
-                        ))}
-                    </nav>
-                </div>
-            ))}
+                            {Object.entries(sections).map(([section, links], idx) => (
+  <div key={idx} className="text-center md:text-left">
+    <h2 className="text-xl font-medium mb-4">{section}</h2>
+    <nav className="space-y-2">
+      {links.map((link, linkIdx) => (
+        typeof link === "string" ? (
+          <div key={linkIdx}> {/* Wrap each link in a div */}
+            <a
+              href={`#${link.toLowerCase().replace(/ /g, "-")}`}
+              className="text-sm font-light block hover:text-gray-700 transition duration-300"
+            >
+              {link}
+            </a>
+          </div>
+        ) : (
+          <div key={linkIdx}> {/* Wrap each link in a div */}
+            <Link
+              href={link.path}
+              className="text-sm font-light block hover:text-gray-700 transition duration-300"
+            >
+              {link.name}
+            </Link>
+          </div>
+        )
+      ))}
+    </nav>
+  </div>
+))}
+
                         </div>
                     </div>
 
