@@ -1,4 +1,9 @@
+"use client";
+
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import router from "next/router";
+
 
 interface CartItem {
   id: string;
@@ -27,6 +32,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
 }) => {
   const [promoCode, setPromoCode] = useState("");
   const [promoDiscount, setPromoDiscount] = useState(0);
+  const router = useRouter();
 
   // Calculate subtotal considering quantity
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -93,9 +99,12 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             Apply
           </button>
         </div>
-        <button className="w-full text-white bg-black px-4 py-2 rounded-full mt-4 text-lg">
-          Go to Checkout
-        </button>
+        <button
+      className="w-full text-white bg-black px-4 py-2 rounded-full mt-4 text-lg"
+      onClick={() => router.push("/checkout")}
+    >
+      Go to Checkout
+    </button>
       </div>
     </div>
   );
