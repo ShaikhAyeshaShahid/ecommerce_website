@@ -112,7 +112,7 @@ const Navbar = () => {
                       >
                       
                         <Link
-              href={`/productDescription/${product._id}`}
+                          href="/productDescription"
                           className="block px-4 py-2 hover:bg-gray-200"
                           onMouseDown={(e) => e.stopPropagation()} 
                         >
