@@ -9,6 +9,9 @@ import Salebanner from "./components/Salebanner";
 import Footer from "./components/Footer";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { allProducts, fourProducts } from "@/sanity/lib/queries";
+import { CartProvider } from "./context/CartContext";
+import { Toaster } from "react-hot-toast";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -106,13 +109,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='bg-white'>
-        <Salebanner />
-        <Navbar
-          // products={allProducts}
-          // setFilteredProducts={setFilteredProducts}
-        />
+      <CartProvider>
+      <Salebanner />
+        <Navbar    />
         {children}
+        <Toaster /> 
         <Footer />
+    </CartProvider>
+       
       </body>
     </html>
   );

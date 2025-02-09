@@ -2,8 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useCart } from "@/app/context/CartContext";
+
 
 const Navbar = () => {
+  const { cart } = useCart();
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [shopDropdown, setShopDropdown] = useState(false);
   const [menDropdown, setMenDropdown] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -42,15 +46,14 @@ const Navbar = () => {
               className="w-8 h-8 mx-2"
               style={{ filter: "brightness(0) saturate(100%) invert(0)" }}
             />
-              <Link href="/productCart">
-              <Image
-                src="/cart-icon.png"
-                alt="Cart"
-                width={20}
-                height={20}
-                className="w-8 h-8 mx-2"
-              />
-            </Link>
+              <Link href="/productCart" className="relative">
+            <Image src="/cart-icon.png" alt="Cart" width={30} height={30} className="w-8 h-8 mx-2" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs px-2 py-1">
+                {cartCount}
+              </span>
+            )}
+          </Link>
             <Image
               src="/user_profile_icon.png"
               alt="User Profile"

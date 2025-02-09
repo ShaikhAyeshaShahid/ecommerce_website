@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { sanityFetch } from '@/sanity/lib/fetch';
 import { singleProduct } from '@/sanity/lib/queries';
 import Reviews from '@/app/components/Reviews';
+import { useCart } from "@/app/context/CartContext";
+
 
 type Product = {
   _id: string;
@@ -25,6 +27,28 @@ const Page = ({ params }: { params: { id: string } }) => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
+
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    if (!selectedColor || !selectedSize) {
+      alert("Please select a color and size.");
+      return;
+    }
+
+    addToCart({
+      id: product?._id ?? "",
+      name: product?.name ?? "",
+      price: Number(product?.price) || 0,
+      size: selectedSize,
+      color: selectedColor,
+      quantity,
+      imageUrl: product?.image ?? "",
+    });
+    
+  };
+
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -140,7 +164,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                     +
                   </button>
                 </div>
-                <button className="bg-black text-white px-6 py-2 rounded-full">Add to Cart</button>
+                <button onClick={handleAddToCart} className="bg-black text-white px-6 py-2 rounded-full">Add to Cart</button>
               </div>
             </div>
           </div>
